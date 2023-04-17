@@ -1,22 +1,26 @@
+import { ClockCircleOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons'
+import { Row, Col, Avatar } from 'antd'
 import React from 'react'
+import { Input } from 'antd';
+import '../scss/Header.scss'
+
+
 
 const Header = () => {
+
   return (
-    <div className="header">
-      <div>
-          {/* left side */}
-      </div>
-      <div>
-          {/* center side */}
-          {/* clock icon */}
-          {/* search icon */}
-      </div>
-      <div>
-          {/* right side */}
-          {/* Help icon */}
-          {/* logedin user profile */}
-      </div>
-    </div>
+    <Row className='header' justify='center'>
+      <Col className='search-header'>
+        <ClockCircleOutlined />
+      </Col>
+      <Col>
+        <SearchOutlined className='search-icon' />
+        <Input className='search-input' placeholder="Search codingblocks" />
+      </Col>
+      <Col>
+        <Avatar shape="square" icon={<UserOutlined />} />
+      </Col>
+    </Row>
   )
 }
 
