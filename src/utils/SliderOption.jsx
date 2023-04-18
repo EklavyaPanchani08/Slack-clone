@@ -1,9 +1,10 @@
 import { Col, Row } from 'antd'
 import React from 'react'
+import { Link } from 'react-router-dom';
 import hashtagIcon from '../assets/icons/hash.svg';
 import '../scss/SliderOption.scss'
 
-const SliderOption = ({ icon, title, channel, userAvatar, userName }) => {
+const SliderOption = ({ icon, title, channel, userAvatar, userName, id }) => {
     return (<>
         {icon &&
             <Row justify='start' className='slider-option'>
@@ -17,25 +18,27 @@ const SliderOption = ({ icon, title, channel, userAvatar, userName }) => {
         }
         {channel &&
             <>
-                <Row justify='start' className='slider-option'>
-                    <Col>
-                        <img className='slider-option-icon' src={hashtagIcon} />
-                    </Col>
-                    <Col>
-                        <span className='slider-option-channel'>{channel}</span>
-                    </Col>
-                </Row>
+                <Link to={`/channel/${id}`}>
+                    <Row justify='start' className='slider-option'>
+                        <Col>
+                            <img className='slider-option-icon' src={hashtagIcon} />
+                        </Col>
+                        <Col>
+                            <span className='slider-option-channel'>{channel}</span>
+                        </Col>
+                    </Row>
+                </Link>
             </>
         }
         {userName &&
-                <Row justify='start' className='slider-option'>
-                    <Col>
-                        <img className='slider-option-icon' src={userAvatar} />
-                    </Col>
-                    <Col>
-                        <span className='slider-option-title'>{userName}</span>
-                    </Col>
-                </Row>
+            <Row justify='start' className='slider-option'>
+                <Col>
+                    <img className='slider-option-icon' src={userAvatar} />
+                </Col>
+                <Col>
+                    <span className='slider-option-title'>{userName}</span>
+                </Col>
+            </Row>
         }
     </>
     )

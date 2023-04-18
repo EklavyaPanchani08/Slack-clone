@@ -1,5 +1,5 @@
-import React from 'react'
-import { Col, Row } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Col, Input, Modal, Row } from 'antd'
 import SliderOption from '../utils/SliderOption'
 import EditIcon from '../assets/icons/edit.svg';
 import MessageIcon from '../assets/icons/message.svg';
@@ -9,9 +9,61 @@ import usersIcon from '../assets/icons/users.svg';
 import plusIcon from '../assets/icons/plus.svg';
 import userAvatar1 from '../assets/images/av.png';
 import userAvatar2 from '../assets/images/ava.jpeg';
-import '../scss/Slider.scss'
+import '../scss/Slider.scss';
+import db from '../firebase'
+import { toast } from 'react-toastify';
 
 const Slider = () => {
+
+    // ALL STATE //
+    const [channel, setChannel] = useState([])
+    const [addChannelName, setAddChannelName] = useState("")
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // GET ALL CHANNELS //
+    useEffect(() => {
+        db.collection("channels").onSnapshot((querySnapshot) => {
+            let newArr = []
+            querySnapshot.forEach((doc) => {
+                let dd = {
+                    id: doc.id,
+                    name: doc.data().name
+                }
+                newArr.push(dd)
+                setChannel(newArr)
+            })
+        },
+            (err) => {
+            }
+        );
+    }, [])
+
+    // ADD CHANNEL //
+    const addChannel = () => {
+        setIsModalOpen(!isModalOpen);
+        db.collection("channels").add({
+            name: addChannelName
+        })
+        toast.success('Channel Added!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+    };
+    const handleCancel = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    const openModal = () => {
+        setIsModalOpen(!isModalOpen)
+        toast.success("Added")
+    }
+
     return (
         <div className='slider'>
             {/*======= HEADER =======*/}
@@ -34,18 +86,19 @@ const Slider = () => {
 
             <div className='slider-second-option'>
                 <span>Channels</span>
-                <SliderOption channel='general' />
-                <SliderOption channel='JavaScript' />
-                <SliderOption channel='React JS' />
-                <SliderOption channel='Node JS' />
-                <Row justify='start' className='slider-option'>
-                    <Col>
-                        <img className='slider-option-plus-icon' src={plusIcon} />
-                    </Col>
-                    <Col>
-                        <span className='slider-option-add-channel'>Add Channels</span>
-                    </Col>
-                </Row>
+                {channel?.map((channel) => (
+                    <SliderOption channel={channel.name} id={channel.id} />
+                ))}
+                <div onClick={openModal}>
+                    <Row justify='start' className='slider-option'>
+                        <Col>
+                            <img className='slider-option-plus-icon' src={plusIcon} />
+                        </Col>
+                        <Col>
+                            <span className='slider-option-add-channel'>Add Channels</span>
+                        </Col>
+                    </Row>
+                </div>
             </div>
 
             <div className='slider-second-option'>
@@ -65,7 +118,13 @@ const Slider = () => {
                     </Col>
                 </Row>
             </div>
+
+            {/* ADD MODAL */}
+            <Modal title="Add Channel" open={isModalOpen} onOk={addChannel} onCancel={handleCancel}>
+                <Input onChange={(e) => setAddChannelName(e.target.value)} />
+            </Modal>
         </div>
+
     )
 }
 
