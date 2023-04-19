@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import hashtagIcon from '../assets/icons/hash.svg';
 import '../scss/SliderOption.scss'
 
-const SliderOption = ({ icon, title, channel, userAvatar, userName, id }) => {
+const SliderOption = ({ icon, title, channel, userAvatar, userName, channelId }) => {
     return (<>
         {icon &&
             <Row justify='start' className='slider-option'>
@@ -18,7 +18,7 @@ const SliderOption = ({ icon, title, channel, userAvatar, userName, id }) => {
         }
         {channel &&
             <>
-                <Link to={`/channel/${id}`}>
+                <Link to={`/channel/${channelId}`}>
                     <Row justify='start' className='slider-option'>
                         <Col>
                             <img className='slider-option-icon' src={hashtagIcon} />

@@ -17,7 +17,7 @@ const Routes = () => {
                     <Route exact path={"/sign-in"} component={SignIn} />
                     <Route exact path={"/login"} component={SignIn} />
                     <Route exact path={"/sign-up"} component={SignUp} />
-                    <Route path={"/cannel/:channelId"} component={Chat} />
+                    <Route path={"/channel/:channelId"} component={Chat} />
 
                     {/* ALL PROTECTED ROUTE */}
                     {/* <ProtectedRoute /> */}

@@ -34,6 +34,7 @@ const Slider = () => {
             })
         },
             (err) => {
+                toast.error(err.message);
             }
         );
     }, [])
@@ -44,24 +45,16 @@ const Slider = () => {
         db.collection("channels").add({
             name: addChannelName
         })
-        toast.success('Channel Added!', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            });
+        toast.success('Channel Added!')
+        setAddChannelName("")
     };
     const handleCancel = () => {
         setIsModalOpen(!isModalOpen);
+        setAddChannelName("")
     };
 
     const openModal = () => {
         setIsModalOpen(!isModalOpen)
-        toast.success("Added")
     }
 
     return (
@@ -87,7 +80,7 @@ const Slider = () => {
             <div className='slider-second-option'>
                 <span>Channels</span>
                 {channel?.map((channel) => (
-                    <SliderOption channel={channel.name} id={channel.id} />
+                    <SliderOption channel={channel.name} channelId={channel.id} />
                 ))}
                 <div onClick={openModal}>
                     <Row justify='start' className='slider-option'>
@@ -121,7 +114,7 @@ const Slider = () => {
 
             {/* ADD MODAL */}
             <Modal title="Add Channel" open={isModalOpen} onOk={addChannel} onCancel={handleCancel}>
-                <Input onChange={(e) => setAddChannelName(e.target.value)} />
+                <Input onChange={(e) => setAddChannelName(e.target.value)} value={addChannelName} />
             </Modal>
         </div>
 
