@@ -6,13 +6,13 @@ import defaultAvatar from "../assets/images/defualt-avatar.png"
 const Message = ({ message, time, useravatar, username }) => {
     return (
         <Row className='message'>
-            <Col><img className='useravatar' src={useravatar ? useravatar : defaultAvatar} alt={username} /></Col>
-            <Col className='user-info'>
+            <Col span={2}><img className='useravatar' src={useravatar ? useravatar : defaultAvatar} alt={username} /></Col>
+            <Col span={22} className='user-info'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <span className='username'>{username}</span>
                     <span className='time'>{new Date(time?.toDate()).toUTCString()}</span>
                 </div>
-                <p className='message'>{message}</p>
+                <p>{message}</p>
             </Col>
         </Row>
     )

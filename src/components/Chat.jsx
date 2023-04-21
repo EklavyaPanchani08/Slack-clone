@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col } from 'antd'
 import { useParams } from "react-router-dom"
 import "../scss/Chat.scss"
 import db from "../firebase"

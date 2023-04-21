@@ -1,7 +1,6 @@
 .message {
     align-items: flex-start;
-    justify-content: space-between;
-    margin: 10px 0px;
+    margin: 15px 0px;
 
     .useravatar {
         width: 40px;
@@ -14,6 +13,7 @@
 
         p {
             margin: 5px 0px 0px 0px !important;
+            font-size: 15px;
         }
 
         .username {
@@ -26,9 +26,9 @@
             font-size: 12px;
             font-weight: 300;
         }
+    }
 
-        .message {
-            font-size: 15px;
-        }
+    .ant-col-2 {
+        flex: unset !important;
     }
 }
