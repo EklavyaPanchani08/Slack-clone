@@ -1,14 +1,15 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Loader from "../components/Loader"
 import ProtectedRoute from "./ProtectedRoute";
 
 // ALL PAGE //
-const Chat = lazy(() => import("../components/Chat"))
+const Dashboard = lazy(() => import("../pages/Dashboard"))
 const SignIn = lazy(() => import("../pages/SignIn"))
 const SignUp = lazy(() => import("../pages/SingUp"))
 
 const Routes = () => {
+    const [user, setUser] = useState(true);
     return (
         <Suspense fallback={<Loader />}>
             <BrowserRouter>
@@ -17,12 +18,12 @@ const Routes = () => {
                     <Route exact path={"/sign-in"} component={SignIn} />
                     <Route exact path={"/login"} component={SignIn} />
                     <Route exact path={"/sign-up"} component={SignUp} />
-                    <Route path={"/channel/:channelId"} component={Chat} />
+                    <Route exact path={"/channel/:channelId"} component={Dashboard} />
 
                     {/* ALL PROTECTED ROUTE */}
-                    {/* <ProtectedRoute /> */}
+                    <ProtectedRoute user={user} exact path={"/channel/:channelId"} component={Dashboard} />
                 </Switch>
-            </BrowserRouter>
+            </BrowserRouter> 
         </Suspense>
     )
 }
