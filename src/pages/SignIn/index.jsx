@@ -1,4 +1,4 @@
-import { Button, Space } from 'antd'
+import { Button } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import googleLogo from "../../assets/icons/google.png"
@@ -18,7 +18,7 @@ const SingIn = () => {
       <div className="container">
         <div className="login_box">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '30px' }}>
-            <h1>Login</h1><img width={"150px"} src={slackLogo} />
+            <h1>Login</h1><img alt="" width={"150px"} src={slackLogo} />
           </div>
           <div className="input_box">
             <label for="">Email :-</label>
@@ -43,7 +43,7 @@ const SingIn = () => {
             </div>
             <div className='google-button' onClick={googleLogIn}>
               <span className="sign-up-google-icon">
-                <img width={"100%"} src={googleLogo} />
+                <img alt="" width={"100%"} src={googleLogo} />
               </span>
             </div>
           </div>

@@ -48,6 +48,7 @@ const Slider = () => {
         toast.success('Channel Added!')
         setAddChannelName("")
     };
+
     const handleCancel = () => {
         setIsModalOpen(!isModalOpen);
         setAddChannelName("")
@@ -62,10 +63,10 @@ const Slider = () => {
             {/*======= HEADER =======*/}
             <Row justify="space-between" className='slider-header'>
                 <Col>
-                    <h3>codingblocks</h3>
+                    <h3>Eklavya Panchani</h3>
                 </Col>
                 <Col>
-                    <img src={EditIcon} className='new-message-icon' />
+                    <img alt="" src={EditIcon} className='new-message-icon' />
                 </Col>
             </Row>
 
@@ -76,7 +77,7 @@ const Slider = () => {
                 <SliderOption icon={hashtagIcon} title='All channels' />
                 <SliderOption icon={usersIcon} title='People' />
             </div>
-
+            {/*======= ALL CHANNELS =======*/}
             <div className='slider-second-option'>
                 <span>Channels</span>
                 {channel?.map((channel) => (
@@ -85,7 +86,7 @@ const Slider = () => {
                 <div onClick={openModal}>
                     <Row justify='start' className='slider-option'>
                         <Col>
-                            <img className='slider-option-plus-icon' src={plusIcon} />
+                            <img alt="" className='slider-option-plus-icon' src={plusIcon} />
                         </Col>
                         <Col>
                             <span className='slider-option-add-channel'>Add Channels</span>
@@ -104,7 +105,7 @@ const Slider = () => {
                 <SliderOption userAvatar={userAvatar2} userName='Munju Brothers' />
                 <Row justify='start' className='slider-option'>
                     <Col>
-                        <img className='slider-option-plus-icon' src={plusIcon} />
+                        <img alt="" className='slider-option-plus-icon' src={plusIcon} />
                     </Col>
                     <Col>
                         <span className='slider-option-add-channel'>Add Coworkers</span>

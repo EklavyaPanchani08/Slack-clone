@@ -1,19 +1,14 @@
-import { createStore } from 'redux';
+// ** Redux Imports
+import rootReducer from './rootReducer'
+import { configureStore } from '@reduxjs/toolkit'
 
-const initialState = {};
-
-function reducer(state = initialState, action) {
-    switch (action.type) {
-      case 'UPDATE':
-        return {
-          ...state,
-          data: action.payload
-        };
-      default:
-        return state;
-    }
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => {
+    return getDefaultMiddleware({
+      serializableCheck: false
+    })
   }
-  
-  const store = createStore(reducer);
-  
-  export default {store};
+})
+
+export { store }

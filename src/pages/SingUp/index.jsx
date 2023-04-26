@@ -66,7 +66,7 @@ const SignUp = () => {
                                 control={control}
                                 render={({ field }) => {
                                     return (
-                                        <input type="password" {...register("password", { required: true, pattern: "^ (?=.* [a - z])(?=.* [A - Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8, 10}$" })}{...field} />
+                                        <input type="password" {...register("password", { required: true, pattern: "^ (?=.* [a - z])(?=.* [A - Z])(?=.*)(?=.*[@$!%*?&])[A-Za-z@$!%*?&]{8, 10}$" })}{...field} />
                                     )
                                 }}
                             >

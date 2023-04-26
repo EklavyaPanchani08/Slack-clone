@@ -1,14 +1,4 @@
-import React from 'react'
-import Routes from './Router/routes'
-import { useStateValue } from "./StateProvider"
-const App = () => {
+import Router from "./Router/Router";
 
-  const [{ user }, dispatch] = useStateValue();
-  return (
-    <div className='container'>
-      <Routes user={"eklavya"}/>
-    </div>
-  )
-}
-
-export default App
+const App = () => <div className='container'><Router/></div>;
+export default App;
