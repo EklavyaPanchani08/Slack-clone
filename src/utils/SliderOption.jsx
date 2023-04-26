@@ -9,7 +9,7 @@ const SliderOption = ({ icon, title, channel, userAvatar, userName, channelId })
         {icon &&
             <Row justify='start' className='slider-option'>
                 <Col>
-                    <img className='slider-option-icon' src={icon} />
+                    <img alt="" className='slider-option-icon' src={icon} />
                 </Col>
                 <Col>
                     <span className='slider-option-title'>{title}</span>
@@ -21,7 +21,7 @@ const SliderOption = ({ icon, title, channel, userAvatar, userName, channelId })
                 <Link to={`/channel/${channelId}`}>
                     <Row justify='start' className='slider-option'>
                         <Col>
-                            <img className='slider-option-icon' src={hashtagIcon} />
+                            <img alt="" className='slider-option-icon' src={hashtagIcon} />
                         </Col>
                         <Col>
                             <span className='slider-option-channel'>{channel}</span>
@@ -33,7 +33,7 @@ const SliderOption = ({ icon, title, channel, userAvatar, userName, channelId })
         {userName &&
             <Row justify='start' className='slider-option'>
                 <Col>
-                    <img className='slider-option-icon' src={userAvatar} />
+                    <img alt="" className='slider-option-icon' src={userAvatar} />
                 </Col>
                 <Col>
                     <span className='slider-option-title'>{userName}</span>
