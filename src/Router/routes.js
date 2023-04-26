@@ -8,24 +8,23 @@ const Dashboard = lazy(() => import("../pages/Dashboard"))
 const SignIn = lazy(() => import("../pages/SignIn"))
 const SignUp = lazy(() => import("../pages/SingUp"))
 
-const Routes = () => {
-    const [user, setUser] = useState(true);
-    return (
-        <Suspense fallback={<Loader />}>
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path={"/"} component={SignIn} />
-                    <Route exact path={"/sign-in"} component={SignIn} />
-                    <Route exact path={"/login"} component={SignIn} />
-                    <Route exact path={"/sign-up"} component={SignUp} />
-                    <Route exact path={"/channel/:channelId"} component={Dashboard} />
-
-                    {/* ALL PROTECTED ROUTE */}
-                    <ProtectedRoute user={user} exact path={"/channel/:channelId"} component={Dashboard} />
-                </Switch>
-            </BrowserRouter> 
-        </Suspense>
-    )
+const Routes = ({ user }) => {
+    return <>
+        {user ?
+            <Route exact path="/channel/:channelId" component={Dashboard} />
+            :
+            <Suspense fallback={<Loader />}>
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/" component={SignIn} />
+                        <Route exact path="/sign-in" component={SignIn} />
+                        <Route exact path="/login" component={SignIn} />
+                        <Route exact path="/sign-up" component={SignUp} />
+                    </Switch>
+                </BrowserRouter>
+            </Suspense>
+        }
+    </>
 }
 
 export default Routes

@@ -6,13 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { Provider as ReduxProvider, useSelector } from "react-redux";
+import store  from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
-      <ToastContainer
+      <ReduxProvider store={store}>
+        <App />
+      </ReduxProvider>
+      {/* <ToastContainer
         position="top-center"
         autoClose={4000}
         hideProgressBar
@@ -23,7 +27,7 @@ root.render(
         draggable
         pauseOnHover={false}
         theme="dark"
-      />
+      /> */}
     </BrowserRouter>
   </React.StrictMode>
 );
